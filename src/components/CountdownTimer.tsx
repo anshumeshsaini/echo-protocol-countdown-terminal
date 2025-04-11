@@ -81,7 +81,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
             Echo Protocol Activation
           </div>
           <div className="text-xs text-cyber-red/80 mt-1 tracking-wider">
-            // GLOBAL CONSCIOUSNESS MERGE AT 12:00 //
+            // IntrusionX goes live at 12:00! //
           </div>
         </div>
       </GlitchEffect>

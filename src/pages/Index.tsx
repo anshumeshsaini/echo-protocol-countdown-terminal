@@ -153,7 +153,7 @@ const Index = () => {
               <div className="absolute inset-0 z-40 flex flex-col items-center justify-center animate-fade-in">
                 <GlitchEffect intensity="high">
                   <h2 className="text-4xl md:text-6xl font-bold text-cyber-red neon-red mb-4">
-                    SYSTEM TAKEOVER COMPLETE
+                    Let's begin!
                   </h2>
                 </GlitchEffect>
                 <p className="text-xl md:text-2xl text-cyber-green neon-green mb-8 text-center max-w-xl">
