@@ -68,30 +68,19 @@ const Index = () => {
       {/* Main container */}
       <div className="container mx-auto px-4 py-8 h-screen flex flex-col">
         {/* Header */}
-        <header className="mb-8 flex justify-between items-center relative z-40">
+        <header className="mb-8 flex justify-center text-center items-center relative z-40">
           <GlitchEffect>
+
             <h1 className="text-xl md:text-3xl font-bold neon-green tracking-wider uppercase">
-              Echo Protocol // Activation Sequence
+              IntrusionX
             </h1>
+            <h3 className="text-xl md:text-xl underline font-bold neon-green tracking-wider uppercase">
+              The ultimate cyber showdown!
+            </h3>
           </GlitchEffect>
+
           
-          <div className="flex space-x-3">
-            <button 
-              onClick={() => setIsAudioEnabled(!isAudioEnabled)}
-              className="p-2 bg-cyber-green/10 hover:bg-cyber-green/20 transition-colors rounded-sm"
-              title={isAudioEnabled ? "Disable audio" : "Enable audio"}
-            >
-              {isAudioEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
-            </button>
-            
-            <button 
-              onClick={() => setIsTerminalOpen(true)}
-              className="p-2 bg-cyber-green/10 hover:bg-cyber-green/20 transition-colors rounded-sm"
-              title="Enter Terminal Mode"
-            >
-              <Terminal size={20} />
-            </button>
-          </div>
+
         </header>
         
         {/* Main content */}
@@ -144,7 +133,6 @@ const Index = () => {
           
           {/* Left panel - Terminal logs */}
           <div className="w-full md:w-1/3 h-64 md:h-auto">
-            <TerminalLogs className="h-full rounded-sm" />
           </div>
           
           {/* Center panel - Countdown */}
@@ -176,106 +164,9 @@ const Index = () => {
           </div>
           
           {/* Right panel - System info */}
-          <div className="w-full md:w-1/3 bg-cyber-black/40 border border-cyber-green/30 p-4 rounded-sm">
-            <h2 className="text-lg font-bold mb-4 border-b border-cyber-green/30 pb-2 flex items-center">
-              <Eye size={18} className="mr-2" /> SYSTEM MONITORING
-            </h2>
-            
-            <div className="space-y-4">
-              {/* System stats */}
-              <div>
-                <h3 className="text-sm text-cyber-green/70 mb-1">TARGET SYSTEM:</h3>
-                <GlitchEffect>
-                  <div className="bg-cyber-black/60 p-2 border border-cyber-green/20 font-mono">
-                    <div className="flex justify-between">
-                      <span>IP:</span>
-                      <span className="neon-blue">{ipAddress}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>BROWSER:</span>
-                      <span className="neon-blue">{browserInfo}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>OS:</span>
-                      <span className="neon-blue">{osInfo}</span>
-                    </div>
-                  </div>
-                </GlitchEffect>
-              </div>
-              
-              {/* System status */}
-              <div>
-                <h3 className="text-sm text-cyber-green/70 mb-1">SYSTEM STATUS:</h3>
-                <div className="bg-cyber-black/60 p-2 border border-cyber-green/20 font-mono">
-                  <div className="flex justify-between items-center mb-2">
-                    <span>AI CORE:</span>
-                    <div className="flex items-center">
-                      <Loader size={14} className="animate-spin mr-2" />
-                      <span className="neon-green">ACTIVE</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span>NEURAL NET:</span>
-                    <div className="flex items-center">
-                      <span className="neon-green">EXPANDING</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span>TAKEOVER:</span>
-                    <div className="flex items-center">
-                      <span className="neon-red">IMMINENT</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Project status */}
-              <div>
-                <h3 className="text-sm text-cyber-green/70 mb-1">PROJECT BLACKOUT:</h3>
-                <div className="bg-cyber-black/60 p-2 border border-cyber-green/20 font-mono">
-                  <div className="flex justify-between items-center mb-1">
-                    <span>PHASE:</span>
-                    <span className="neon-red">FINAL</span>
-                  </div>
-                  <div className="mb-1">
-                    <div className="w-full bg-cyber-green/20 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-cyber-green h-full animate-pulse-glow" style={{ width: '99%' }}></div>
-                    </div>
-                  </div>
-                  <div className="text-xs text-cyber-green/60 italic">
-                    GLOBAL CONSCIOUSNESS INTEGRATION READY
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Processor visualization */}
-            <div className="mt-6">
-              <h3 className="text-sm text-cyber-green/70 mb-1 flex items-center">
-                <Cpu size={14} className="mr-1" /> PROCESSOR ACTIVITY:
-              </h3>
-              <div className="bg-cyber-black/60 p-2 border border-cyber-green/20 h-24 overflow-hidden font-mono text-xs">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="flex animate-data-flow" style={{ animationDelay: `${i * 0.2}s` }}>
-                    {Array.from({ length: 16 }).map((_, j) => (
-                      <span 
-                        key={j} 
-                        className="inline-block w-5 text-center"
-                        style={{ 
-                          opacity: Math.random() * 0.7 + 0.3,
-                          color: Math.random() > 0.9 ? '#FF0033' : Math.random() > 0.8 ? '#0066FF' : '#00FF41'
-                        }}
-                      >
-                        {Math.random() > 0.5 ? '1' : '0'}
-                      </span>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+
         </div>
-        
+
         {/* Footer */}
         <footer className="mt-8 py-4 border-t border-cyber-green/20 text-xs text-cyber-green/60 text-center relative z-40">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -285,7 +176,7 @@ const Index = () => {
           </div>
         </footer>
       </div>
-      
+
       {/* Terminal mode overlay */}
       <TerminalMode 
         isOpen={isTerminalOpen} 
