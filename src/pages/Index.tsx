@@ -71,10 +71,10 @@ const Index = () => {
         <header className="mb-8 flex justify-center text-center items-center relative z-40">
           <GlitchEffect>
 
-            <h1 className="text-xl md:text-3xl font-bold neon-green tracking-wider uppercase">
+            <h1 className="text-xl md:text-7xl font-bold neon-green tracking-wider uppercase">
               IntrusionX
             </h1>
-            <h3 className="text-xl md:text-xl underline font-bold neon-green tracking-wider uppercase">
+            <h3 className="text-xl md:text-4xl underline font-semibold neon-green tracking-wider uppercase">
               The ultimate cyber showdown!
             </h3>
           </GlitchEffect>
