@@ -1,222 +1,87 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Local fonts */
+@font-face {
+  font-family: 'KnightWarrior';
+  src: url('/fonts/KnightWarrior.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Steeler';
+  src: url('/fonts/Steelar.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'StreetCruiser';
+  src: url('/fonts/StreetCruiserRegular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
+/* Base styles */
 @layer base {
-  :root {
-    --background: 210 30% 4%;
-    --foreground: 150 100% 50%;
-
-    --card: 210 30% 7%;
-    --card-foreground: 150 100% 50%;
-
-    --popover: 210 30% 3%;
-    --popover-foreground: 150 100% 50%;
-
-    --primary: 150 100% 45%;
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 210 100% 50%;
-    --secondary-foreground: 0 0% 0%;
-
-    --muted: 210 30% 15%;
-    --muted-foreground: 150 80% 60%;
-
-    --accent: 300 100% 60%;
-    --accent-foreground: 0 0% 0%;
-
-    --destructive: 0 100% 45%;
-    --destructive-foreground: 0 0% 0%;
-
-    --border: 150 100% 20%;
-    --input: 210 30% 10%;
-    --ring: 150 100% 40%;
-
-    --radius: 0.25rem;
+  html {
+    font-family: "Inter", system-ui, sans-serif;
   }
-
-  .dark {
-    --background: 210 30% 4%;
-    --foreground: 150 100% 50%;
-
-    --card: 210 30% 7%;
-    --card-foreground: 150 100% 50%;
-
-    --popover: 210 30% 3%;
-    --popover-foreground: 150 100% 50%;
-
-    --primary: 150 100% 45%;
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 210 100% 50%;
-    --secondary-foreground: 0 0% 0%;
-
-    --muted: 210 30% 15%;
-    --muted-foreground: 150 80% 60%;
-
-    --accent: 300 100% 60%;
-    --accent-foreground: 0 0% 0%;
-
-    --destructive: 0 100% 45%;
-    --destructive-foreground: 0 0% 0%;
-
-    --border: 150 100% 20%;
-    --input: 210 30% 10%;
-    --ring: 150 100% 40%;
+  
+  /* Better Steeler font rendering */
+  .font-steeler {
+    font-family: "Steeler", "Orbitron", fantasy, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    text-rendering: optimizeLegibility;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* Font utility classes */
+@layer utilities {
+  .font-orbitron {
+    font-family: "Orbitron", sans-serif;
   }
-
-  body {
-    @apply bg-cyber-black text-cyber-green font-['Share_Tech_Mono'] overflow-hidden;
+  
+  .font-metal-mania {
+    font-family: "Metal Mania", cursive;
   }
-
-  /* Scanlines effect overlay */
-  .scanlines::before {
-    content: "";
-    @apply pointer-events-none fixed inset-0 z-[60] bg-[linear-gradient(to_bottom,rgba(0,255,65,0)_50%,rgba(0,255,65,0.025)_50%)] bg-[length:100%_4px];
+  
+  .font-knight-warrior {
+    font-family: "KnightWarrior", fantasy;
   }
-
-  /* Glitch effect */
-  .glitch {
-    @apply relative;
+  
+  .font-street-cruiser {
+    font-family: "StreetCruiser", fantasy;
   }
-
-  .glitch::before,
-  .glitch::after {
-    content: attr(data-text);
-    @apply absolute left-0 w-full h-full bg-transparent;
-    clip: rect(0, 0, 0, 0);
+  
+  .font-cyberpunk {
+    font-family: "Cyberpunk", monospace;
   }
-
-  .glitch::before {
-    @apply text-cyber-red -left-[2px];
-    animation: glitch-effect 3s infinite linear alternate-reverse;
+  
+  .font-neon {
+    font-family: "Neon", fantasy;
   }
-
-  .glitch::after {
-    @apply text-cyber-blue left-[2px];
-    animation: glitch-effect 2s infinite linear alternate-reverse;
-  }
-
-  /* Holographic effect */
-  .holographic {
-    @apply relative transition-all duration-500;
-    background: linear-gradient(45deg, rgba(0, 255, 65, 0.2), rgba(0, 102, 255, 0.2));
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5), 0 0 10px rgba(0, 255, 65, 0.3);
-  }
-
-  .crt-effect {
-    @apply relative overflow-hidden;
-  }
-
-  .crt-effect::before {
-    content: " ";
-    @apply block absolute top-0 left-0 bottom-0 right-0 opacity-10 pointer-events-none;
-    background: linear-gradient(
-      rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.25) 50%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.06),
-      rgba(0, 255, 0, 0.02),
-      rgba(0, 0, 255, 0.06)
-    );
-    background-size: 100% 2px, 3px 100%;
-  }
-
-  /* Glowing text effect */
-  .neon-green {
-    @apply text-cyber-green;
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.8), 0 0 10px rgba(0, 255, 65, 0.5), 0 0 15px rgba(0, 255, 65, 0.3);
-  }
-
-  .neon-red {
-    @apply text-cyber-red;
-    text-shadow: 0 0 5px rgba(255, 0, 51, 0.8), 0 0 10px rgba(255, 0, 51, 0.5), 0 0 15px rgba(255, 0, 51, 0.3);
-  }
-
-  .neon-blue {
-    @apply text-cyber-blue;
-    text-shadow: 0 0 5px rgba(0, 102, 255, 0.8), 0 0 10px rgba(0, 102, 255, 0.5), 0 0 15px rgba(0, 102, 255, 0.3);
-  }
-
-  .neon-purple {
-    @apply text-cyber-purple;
-    text-shadow: 0 0 5px rgba(153, 0, 255, 0.8), 0 0 10px rgba(153, 0, 255, 0.5), 0 0 15px rgba(153, 0, 255, 0.3);
+  
+  .font-tech-noir {
+    font-family: "TechNoir", sans-serif;
   }
 }
 
-@keyframes glitch-effect {
-  0% {
-    clip: rect(44px, 9999px, 56px, 0);
-  }
-  5% {
-    clip: rect(25px, 9999px, 99px, 0);
-  }
-  10% {
-    clip: rect(15px, 9999px, 12px, 0);
-  }
-  15% {
-    clip: rect(58px, 9999px, 23px, 0);
-  }
-  20% {
-    clip: rect(13px, 9999px, 69px, 0);
-  }
-  25% {
-    clip: rect(42px, 9999px, 61px, 0);
-  }
-  30% {
-    clip: rect(26px, 9999px, 82px, 0);
-  }
-  35% {
-    clip: rect(76px, 9999px, 5px, 0);
-  }
-  40% {
-    clip: rect(1px, 9999px, 70px, 0);
-  }
-  45% {
-    clip: rect(52px, 9999px, 97px, 0);
-  }
-  50% {
-    clip: rect(37px, 9999px, 72px, 0);
-  }
-  55% {
-    clip: rect(63px, 9999px, 84px, 0);
-  }
-  60% {
-    clip: rect(24px, 9999px, 35px, 0);
-  }
-  65% {
-    clip: rect(95px, 9999px, 2px, 0);
-  }
-  70% {
-    clip: rect(48px, 9999px, 32px, 0);
-  }
-  75% {
-    clip: rect(91px, 9999px, 40px, 0);
-  }
-  80% {
-    clip: rect(61px, 9999px, 16px, 0);
-  }
-  85% {
-    clip: rect(73px, 9999px, 74px, 0);
-  }
-  90% {
-    clip: rect(31px, 9999px, 65px, 0);
-  }
-  95% {
-    clip: rect(85px, 9999px, 90px, 0);
-  }
-  100% {
-    clip: rect(81px, 9999px, 89px, 0);
-  }
+/* Global styles */
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
