@@ -72,15 +72,27 @@ const DataSphere: React.FC<DataSphereProps> = ({
     return () => clearInterval(pulseInterval);
   }, [pulseWithCountdown]);
   
-  // Calculate color class
-  const colorClass = `bg-${color}`;
-  const glowClass = `shadow-[0_0_10px_rgba(0,255,65,0.7),0_0_20px_rgba(0,255,65,0.4)]`;
+  // Determine appropriate shadow color based on sphere color
+  const getShadowStyle = () => {
+    if (color === 'cyber-red') {
+      return '0 0 10px rgba(255, 0, 51, 0.7), 0 0 20px rgba(255, 0, 51, 0.4)';
+    } else if (color === 'cyber-blue') {
+      return '0 0 10px rgba(0, 102, 255, 0.7), 0 0 20px rgba(0, 102, 255, 0.4)';
+    } else {
+      return '0 0 10px rgba(0, 255, 65, 0.7), 0 0 20px rgba(0, 255, 65, 0.4)';
+    }
+  };
   
-  if (color === 'cyber-red') {
-    glowClass === `shadow-[0_0_10px_rgba(255,0,51,0.7),0_0_20px_rgba(255,0,51,0.4)]`;
-  } else if (color === 'cyber-blue') {
-    glowClass === `shadow-[0_0_10px_rgba(0,102,255,0.7),0_0_20px_rgba(0,102,255,0.4)]`;
-  }
+  // Get color values for background gradient
+  const getColorValue = () => {
+    if (color === 'cyber-red') {
+      return '#FF0033';
+    } else if (color === 'cyber-blue') {
+      return '#0066FF';
+    } else {
+      return '#00FF41';
+    }
+  };
   
   return (
     <div 
@@ -98,8 +110,8 @@ const DataSphere: React.FC<DataSphereProps> = ({
           rotateY(${rotation.y}deg) 
           rotateZ(${rotation.z}deg)
         `,
-        backgroundImage: `radial-gradient(circle at 30% 30%, transparent 0%, ${color === 'cyber-green' ? '#00FF41' : color === 'cyber-red' ? '#FF0033' : '#0066FF'} 30%, transparent 70%)`,
-        boxShadow: '0 0 10px rgba(0, 255, 65, 0.7), 0 0 20px rgba(0, 255, 65, 0.4)'
+        backgroundImage: `radial-gradient(circle at 30% 30%, transparent 0%, ${getColorValue()} 30%, transparent 70%)`,
+        boxShadow: getShadowStyle()
       }}
     >
       <div className="w-[80%] h-[80%] rounded-full opacity-50 bg-black"></div>

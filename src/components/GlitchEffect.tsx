@@ -6,12 +6,14 @@ interface GlitchEffectProps {
   intensity?: 'low' | 'medium' | 'high';
   className?: string;
   children: React.ReactNode;
+  color?: 'green' | 'red' | 'blue' | 'purple';
 }
 
 const GlitchEffect: React.FC<GlitchEffectProps> = ({
   intensity = 'medium',
   className,
-  children
+  children,
+  color = 'green'
 }) => {
   const [isGlitching, setIsGlitching] = useState(false);
   
@@ -38,10 +40,32 @@ const GlitchEffect: React.FC<GlitchEffectProps> = ({
     return () => clearInterval(intervalId);
   }, [intensity]);
   
+  const getColorClass = () => {
+    switch (color) {
+      case 'red': return 'text-cyber-red';
+      case 'blue': return 'text-cyber-blue';
+      case 'purple': return 'text-cyber-purple';
+      case 'green':
+      default: return 'text-cyber-green';
+    }
+  };
+  
+  const getGlowClass = () => {
+    switch (color) {
+      case 'red': return 'neon-red';
+      case 'blue': return 'neon-blue';
+      case 'purple': return 'neon-purple';
+      case 'green':
+      default: return 'neon-green';
+    }
+  };
+  
   return (
     <div className={cn(
       'relative',
       isGlitching && 'animate-text-glitch',
+      getColorClass(),
+      isGlitching && getGlowClass(),
       className
     )}>
       {typeof children === 'string' ? (
@@ -49,7 +73,13 @@ const GlitchEffect: React.FC<GlitchEffectProps> = ({
       ) : children}
       
       {isGlitching && (
-        <div className="absolute inset-0 bg-cyber-green-glow opacity-10 z-10"></div>
+        <div className={cn(
+          "absolute inset-0 opacity-20 z-10",
+          color === 'red' ? 'bg-cyber-red-glow' :
+          color === 'blue' ? 'bg-cyber-blue-glow' :
+          color === 'purple' ? 'bg-cyber-purple-glow' :
+          'bg-cyber-green-glow'
+        )}></div>
       )}
     </div>
   );
